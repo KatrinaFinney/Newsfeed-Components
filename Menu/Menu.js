@@ -33,3 +33,57 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+// grab the parent element to append our data too
+const containerTwo = document.querySelector('.header')
+console.log (containerTwo);
+// we looped through the data and created panels for each content and title
+
+containerTwo.appendChild(createMenu(menuItems))
+
+
+//define functional component here
+function createMenu(menuItems) {
+  
+
+  // define new elements
+  const menuDiv = document.createElement('div');
+  const menuList = document.createElement('ul');
+  const itemOne = document.createElement('li');
+  const itemTwo = document.createElement('li');
+  const itemThree = document.createElement('li');
+  const itemFour = document.createElement('li');
+  const itemFive = document.createElement('li');
+  const itemSix = document.createElement('li');
+  
+  // Setup structure of elements
+  menuDiv.appendChild(menuList);
+  menuList.appendChild(itemOne);
+  menuList.appendChild(itemTwo);
+  menuList.appendChild(itemThree);
+  menuList.appendChild(itemFour);
+  menuList.appendChild(itemFive);
+  menuList.appendChild(itemSix);
+  // set class names
+  menuDiv.classList.add('menu');
+ //tc 
+  itemOne.textContent = menuItems[0];
+  itemTwo.textContent = menuItems[1];
+  itemThree.textContent = menuItems[2];
+  itemFour.textContent = menuItems[3];
+  itemFive.textContent = menuItems[4];
+  itemSix.textContent = menuItems[5];
+  
+  const menuButton = document.querySelector('.menu-button');
+
+   // Toggling classes means this:
+  // Remove .toggle-on if .toggle-on exists
+  // Add .toggle-on on if .toggle-on does not exist
+  menuButton.addEventListener('click',() => {
+    // 1. toggle hide-btn on BOTH buttons
+    menuDiv.classList.toggle('menu--open');
+    
+  })
+  return menuDiv
+
+}

@@ -85,8 +85,24 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
-];
+  },
+  {
+  title: 'Lets See if I Understand',
+  date: 'October 30, 2019',
+  firstParagraph: `Yooooo I'll tell you what I want what I really want.. So tell me what you want what you really really want.
+        ... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+        Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `If I should stay, I would only be in your way. So I'll go, but I know...I'll think of you every step of the wayyyy
+        And IIIIII will always love youuuuuu I....will always love you!!! - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+        hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+        hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `I've paid my dues..... Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+        Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+        Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+},
+]
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -112,3 +128,60 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+// grab the parent element to append our data too
+const container = document.querySelector('.articles')
+console.log (container);
+// we looped through the data and created panels for each content and title
+data.forEach(data => {
+  container.appendChild(createCard(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+//define functional component here
+function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  
+
+  // define new elements
+  const card = document.createElement('div');
+  const cardTitle = document.createElement('h2');
+  const cardDate = document.createElement('p');
+  const firstPara = document.createElement('p');
+  const secondPara = document.createElement('p');
+  const thirdPara = document.createElement('p');
+  const expandButtonSpan = document.createElement('span');
+  
+  // Setup structure of elements
+  card.appendChild(cardTitle);
+  card.appendChild(cardDate);
+  card.appendChild(firstPara);
+  card.appendChild(secondPara);
+  card.appendChild(thirdPara);
+  card.appendChild(expandButtonSpan);
+  
+  // set class names
+  card.classList.add('article')
+  cardDate.classList.add('date');
+  expandButtonSpan.classList.add('expandButton');
+ 
+ 
+  cardTitle.textContent = title;
+  cardDate.textContent = date;
+  firstPara.textContent = firstParagraph;
+  secondPara.textContent = secondParagraph;
+  thirdPara.textContent = thirdParagraph;
+  expandButtonSpan.textContent = 'Click Me!';
+  
+  // button events
+   // Toggling classes means this:
+  // Remove .toggle-on if .toggle-on exists
+  // Add .toggle-on on if .toggle-on does not exist
+  expandButtonSpan.addEventListener('click',() => {
+    // 1. toggle hide-btn on BOTH buttons
+    expandButtonSpan.classList.toggle('article');
+    card.classList.toggle('article-open');
+    
+  })
+  return card
+
+}
