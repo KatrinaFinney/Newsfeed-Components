@@ -80,6 +80,8 @@
   position: absolute;
   left: 20px;
   cursor: pointer;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 .menu {
   display: none;

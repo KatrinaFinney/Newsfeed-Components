@@ -82,8 +82,15 @@ function createMenu(menuItems) {
   menuButton.addEventListener('click',() => {
     // 1. toggle hide-btn on BOTH buttons
     menuDiv.classList.toggle('menu--open');
-    
+    //TweenMax.to('.menu-button', 1, {scaleX: 0, height: 0});
   })
   return menuDiv
 
 }
+document.getElementById('header').addEventListener('click',function(){
+  TweenMax.to('.menu-button', 1, {scaleX: 1, height: '100%'});
+})
+//document.querySelector('.menu-button').addEventListener('click',function(){
+  //TweenMax.to('.menu-button', 1, {scaleX: 0, height: 0});
+//})
+
